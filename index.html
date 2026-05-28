@@ -1,567 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Gavrila E — Resume</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Merriweather:wght@700;900&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --navy: #0f2544;
-    --blue: #1a4480;
-    --accent: #3e8ef7;
-    --gold: #e8b14f;
-    --light: #f4f7fd;
-    --white: #ffffff;
-    --muted: #6b7fa3;
-    --border: #d4dff0;
-    --text: #1c2b45;
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Lato', sans-serif;
+  background: #e8edf2;
+  display: flex;
+  justify-content: center;
+  padding: 30px 10px;
+  min-height: 100vh;
+}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--light);
-    color: var(--text);
-    min-height: 100vh;
-  }
+.resume {
+  width: 820px;
+  background: #fff;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr;
+}
 
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #2563b0 100%);
-    position: relative;
-    overflow: hidden;
-    padding: 60px 40px 70px;
-    display: flex;
-    align-items: center;
-    gap: 48px;
-  }
+/* ══════════════ LEFT SIDEBAR ══════════════ */
+.sidebar {
+  background: #2d5fa6;
+  grid-row: 1 / 3;
+  padding: 0 0 36px;
+  color: #fff;
+}
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 340px; height: 340px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    pointer-events: none;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: -40px;
-    width: 220px; height: 220px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.03);
-    pointer-events: none;
-  }
+/* Profile photo area */
+.profile-area {
+  background: #1e4a8c;
+  padding: 32px 20px 24px;
+  text-align: center;
+  position: relative;
+}
 
-  .avatar-wrap {
-    flex-shrink: 0;
-    width: 130px; height: 130px;
-    border-radius: 50%;
-    border: 4px solid var(--gold);
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    background: var(--blue);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    color: var(--gold);
-    font-weight: 700;
-    letter-spacing: 2px;
-  }
+.photo-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.5);
+  margin: 0 auto 16px;
+  overflow: hidden;
+  background: #3a6fc4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  font-weight: 700;
+  color: #fff;
+  /* Diagonal clip like PDF */
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+}
 
-  .hero-text { flex: 1; }
+.name-left {
+  font-family: 'Merriweather', serif;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: #fff;
+  letter-spacing: 1px;
+}
 
-  .hero-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
-    font-weight: 900;
-    color: var(--white);
-    line-height: 1.05;
-    letter-spacing: -1px;
-  }
+.tagline-left {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.75);
+  margin-top: 6px;
+  line-height: 1.5;
+  font-weight: 300;
+}
 
-  .hero-name span { color: var(--gold); }
+/* sidebar sections */
+.sb-section {
+  padding: 20px 22px 0;
+}
 
-  .hero-tagline {
-    margin-top: 10px;
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.72);
-    font-weight: 300;
-    letter-spacing: 0.5px;
-  }
+.sb-heading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid rgba(255,255,255,0.25);
+}
 
-  .hero-contacts {
-    margin-top: 22px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px 28px;
-  }
+.sb-heading svg { flex-shrink: 0; opacity: 0.85; }
 
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.82);
-    text-decoration: none;
-    transition: color .2s;
-  }
-  .contact-item:hover { color: var(--gold); }
-  .contact-item svg { opacity: 0.75; flex-shrink: 0; }
+/* Contact */
+.contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 9px;
+}
+.contact-row svg { flex-shrink: 0; margin-top: 1px; opacity: 0.8; }
+.contact-row a,
+.contact-row span {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  line-height: 1.45;
+  word-break: break-all;
+}
+.contact-row a:hover { color: #fff; text-decoration: underline; }
 
-  /* ── LAYOUT ── */
-  .page {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
+/* About */
+.sb-about {
+  font-size: 11px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.7;
+  font-weight: 300;
+}
 
-  .two-col {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 0;
-  }
+/* Skills */
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.88);
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.skill-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #6eb3f7;
+  flex-shrink: 0;
+}
 
-  /* ── SIDEBAR ── */
-  .sidebar {
-    background: var(--navy);
-    padding: 36px 28px;
-    min-height: 100%;
-  }
+/* ══════════════ TOP HEADER (right side) ══════════════ */
+.top-header {
+  background: #3a6fc4;
+  padding: 28px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+/* (name is in sidebar for PDF match) */
 
-  .sidebar-section { margin-bottom: 36px; }
+/* ══════════════ MAIN CONTENT ══════════════ */
+.main {
+  padding: 24px 28px 36px;
+}
 
-  .sidebar-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(232,177,79,0.25);
-  }
+.section { margin-bottom: 26px; }
 
-  /* Skills */
-  .skill-list { list-style: none; }
-  .skill-list li {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 7px 0;
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.85);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .skill-list li::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
+.sec-title {
+  font-family: 'Merriweather', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e3a6e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #d0daea;
+}
+.sec-title svg { color: #3a6fc4; }
 
-  /* Education sidebar */
-  .edu-entry { margin-bottom: 18px; }
-  .edu-degree {
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.35;
-  }
-  .edu-school {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.55);
-    margin-top: 3px;
-    font-style: italic;
-  }
-  .edu-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
-    font-size: 0.75rem;
-    color: var(--accent);
-    font-weight: 500;
-  }
+/* Timeline dot style matching PDF */
+.tl-entry {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 16px;
+}
+.tl-entry::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 5px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #3a6fc4;
+}
+.tl-entry::after {
+  content: '';
+  position: absolute;
+  left: 4px; top: 16px;
+  width: 1.5px;
+  bottom: -10px;
+  background: #c5d3e8;
+}
+.tl-entry:last-child::after { display: none; }
 
-  /* Certs */
-  .cert-tag {
-    display: inline-block;
-    background: rgba(62,142,247,0.15);
-    border: 1px solid rgba(62,142,247,0.3);
-    border-radius: 4px;
-    padding: 4px 9px;
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.8);
-    margin: 3px 3px 3px 0;
-  }
+.tl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 6px;
+}
+.tl-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1a3260;
+  line-height: 1.35;
+}
+.tl-date {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #3a6fc4;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tl-org {
+  font-size: 11px;
+  color: #5a7aaa;
+  font-style: italic;
+  margin-top: 2px;
+}
+.tl-desc {
+  font-size: 11.5px;
+  color: #3d4f6b;
+  line-height: 1.65;
+  margin-top: 5px;
+}
+.tl-tech {
+  font-size: 10.5px;
+  color: #5a7aaa;
+  font-style: italic;
+  margin-top: 4px;
+}
+.tl-tech strong { color: #3a6fc4; font-style: normal; font-weight: 700; }
 
-  /* ── MAIN ── */
-  .main {
-    background: var(--white);
-    padding: 36px 40px;
-  }
+/* Education rows */
+.edu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+.edu-left { flex: 1; }
+.edu-degree { font-size: 12.5px; font-weight: 700; color: #1a3260; }
+.edu-school { font-size: 11px; color: #3a6fc4; font-style: italic; margin-top: 2px; }
+.edu-score  { font-size: 11px; color: #5a7aaa; margin-top: 2px; }
+.edu-year   { font-size: 11px; color: #3a6fc4; font-weight: 700; white-space: nowrap; }
 
-  .section { margin-bottom: 38px; }
+/* Leadership list */
+.lead-list { list-style: none; }
+.lead-list li {
+  font-size: 12px;
+  color: #3d4e6b;
+  padding: 5px 0 5px 16px;
+  border-bottom: 1px solid #e8edf5;
+  position: relative;
+  line-height: 1.5;
+}
+.lead-list li::before {
+  content: '●';
+  position: absolute;
+  left: 0;
+  color: #3a6fc4;
+  font-size: 7px;
+  top: 7px;
+}
 
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--navy);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--border);
-  }
+/* Certs */
+.cert-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.cert-tag {
+  background: #eaf1fb;
+  border: 1px solid #b8cff0;
+  border-radius: 3px;
+  padding: 3px 8px;
+  font-size: 10.5px;
+  color: #2d5fa6;
+}
 
-  .section-title .icon {
-    width: 30px; height: 30px;
-    background: var(--accent);
-    border-radius: 7px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .section-title .icon svg { color: #fff; }
+@media print {
+  body { background: #fff; padding: 0; }
+  .resume { box-shadow: none; width: 100%; }
+}
 
-  /* About */
-  .about-text {
-    font-size: 0.97rem;
-    line-height: 1.75;
-    color: #3a4a65;
-  }
-
-  /* Timeline entries */
-  .timeline-entry {
-    position: relative;
-    padding-left: 22px;
-    margin-bottom: 24px;
-  }
-  .timeline-entry::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 7px;
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
-    border: 2px solid #b8d4f8;
-  }
-  .timeline-entry::after {
-    content: '';
-    position: absolute;
-    left: 4px; top: 20px;
-    width: 2px;
-    bottom: -14px;
-    background: var(--border);
-  }
-  .timeline-entry:last-child::after { display: none; }
-
-  .entry-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-
-  .entry-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--navy);
-  }
-
-  .entry-date {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--accent);
-    background: rgba(62,142,247,0.08);
-    border-radius: 4px;
-    padding: 2px 8px;
-    white-space: nowrap;
-  }
-
-  .entry-org {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-top: 2px;
-    font-style: italic;
-  }
-
-  .entry-desc {
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: #3d4f6b;
-    margin-top: 7px;
-  }
-
-  .tech-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 9px;
-  }
-
-  .tech-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(26,68,128,0.07);
-    border: 1px solid rgba(26,68,128,0.15);
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--blue);
-    letter-spacing: 0.3px;
-  }
-
-  /* Leadership */
-  .leadership-list { list-style: none; }
-  .leadership-list li {
-    font-size: 0.9rem;
-    color: #3a4a65;
-    padding: 6px 0 6px 18px;
-    position: relative;
-    border-bottom: 1px solid var(--border);
-    line-height: 1.5;
-  }
-  .leadership-list li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--gold);
-    font-size: 0.8rem;
-    top: 7px;
-  }
-
-  /* ── PRINT ── */
-  @media print {
-    body { background: #fff; }
-    .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  }
-
-  @media (max-width: 700px) {
-    .two-col { grid-template-columns: 1fr; }
-    .hero { flex-direction: column; padding: 36px 24px 48px; text-align: center; }
-    .hero-contacts { justify-content: center; }
-    .main { padding: 28px 20px; }
-    .sidebar { padding: 28px 20px; }
-  }
+@media (max-width: 860px) {
+  .resume { width: 100%; grid-template-columns: 200px 1fr; }
+}
+@media (max-width: 600px) {
+  .resume { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .sidebar { grid-row: auto; }
+}
 </style>
 </head>
 <body>
-<div class="page">
+<div class="resume">
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="avatar-wrap">GE</div>
-    <div class="hero-text">
-      <h1 class="hero-name">Gavrila <span>E</span></h1>
-      <p class="hero-tagline">Student Passionate About Technology &amp; Continuous Learning · B.E. Information Technology</p>
-      <div class="hero-contacts">
-        <a class="contact-item" href="tel:+917904325516">
-          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.07 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-          +91 7904325516
-        </a>
-        <a class="contact-item" href="mailto:gavrila.27it@licet.ac.in">
-          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg>
-          gavrila.27it@licet.ac.in
-        </a>
-        <a class="contact-item" href="https://github.com/GAVRI12" target="_blank">
-          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          github.com/GAVRI12
-        </a>
-        <span class="contact-item">
-          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Chennai, Tamil Nadu - 600094
-        </span>
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar">
+
+    <!-- Profile photo + name -->
+    <div class="profile-area">
+      <div class="photo-circle">GE</div>
+      <div class="name-left">GAVRILA E</div>
+      <div class="tagline-left">Student Passionate About<br/>Technology &amp; Continuous Learning</div>
+    </div>
+
+    <!-- Contact -->
+    <div class="sb-section">
+      <div class="sb-heading">
+        <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.07 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Contact
+      </div>
+
+      <div class="contact-row">
+        <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.07 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <a href="tel:+917904325516">+91 7904325516</a>
+      </div>
+
+      <div class="contact-row">
+        <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg>
+        <a href="mailto:gavrila.27it@licet.ac.in">gavrila.27it@licet.ac.in</a>
+      </div>
+
+      <div class="contact-row">
+        <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>9/11 A Brindavan colony,<br/>Choolaimedu,<br/>Chennai - 600094</span>
+      </div>
+
+      <div class="contact-row">
+        <svg width="13" height="13" fill="#fff" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <a href="https://github.com/GAVRI12" target="_blank">github.com/GAVRI12</a>
       </div>
     </div>
-  </header>
 
-  <!-- TWO COLUMN BODY -->
-  <div class="two-col">
+    <!-- About Me -->
+    <div class="sb-section" style="margin-top:10px;">
+      <div class="sb-heading">
+        <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+        About Me
+      </div>
+      <p class="sb-about">I am an Information Technology student with a strong curiosity and a constant desire to learn emerging technologies. With a solid foundation in programming, I aim to strengthen my skills by working on real-world projects and gaining hands-on experience.</p>
+    </div>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <!-- Technical Skills -->
+    <div class="sb-section" style="margin-top:14px;">
+      <div class="sb-heading">
+        <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Technical Skills
+      </div>
+      <div class="skill-item"><span class="skill-dot"></span>DBMS, SQL, MongoDB</div>
+      <div class="skill-item"><span class="skill-dot"></span>JAVA</div>
+      <div class="skill-item"><span class="skill-dot"></span>Software Testing</div>
+      <div class="skill-item"><span class="skill-dot"></span>App Development</div>
+      <div class="skill-item"><span class="skill-dot"></span>HTML / CSS / JS</div>
+      <div class="skill-item"><span class="skill-dot"></span>Python</div>
+      <div class="skill-item"><span class="skill-dot"></span>Full Stack</div>
+    </div>
 
-      <div class="sidebar-section">
-        <div class="sidebar-title">Technical Skills</div>
-        <ul class="skill-list">
-          <li>Python</li>
-          <li>Java</li>
-          <li>HTML / CSS / JavaScript</li>
-          <li>Full Stack Development</li>
-          <li>App Development</li>
-          <li>DBMS · SQL · MongoDB</li>
-          <li>Software Testing</li>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main">
+
+    <!-- EDUCATION -->
+    <div class="section">
+      <div class="sec-title">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Education
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-header">
+          <div>
+            <div class="tl-title">Bachelor of Engineering and Technology in Information Technology</div>
+            <div class="tl-org">Honours in Data Science</div>
+            <div class="tl-org" style="margin-top:2px;font-style:italic;color:#3a6fc4;font-weight:700;">Loyola-ICAM College of Engineering and Technology</div>
+            <div class="tl-desc" style="margin-top:3px;">CGPA: 8.83 &nbsp;(5 SEM)</div>
+          </div>
+          <div class="tl-date">2023 – 2027</div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-header">
+          <div>
+            <div class="tl-title">Higher Secondary</div>
+            <div class="tl-org" style="color:#3a6fc4;font-weight:700;font-style:italic;">ST. Vincent's Mat. Hr. Sec School</div>
+            <div class="tl-desc" style="margin-top:3px;">Percentage: 87%</div>
+          </div>
+          <div class="tl-date">2021 – 2023</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERNSHIPS -->
+    <div class="section">
+      <div class="sec-title">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        Internships
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-header">
+          <div class="tl-title">Data Science Intern – Strato Global Pvt Ltd</div>
+          <div class="tl-date">7/4/2025 – 28/10/2025</div>
+        </div>
+        <div class="tl-desc">Contributed to backend logic and data handling for an AI-based booking workflow using FastAPI.</div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-header">
+          <div class="tl-title">AI Intern – Edunet Foundation (AICTE)</div>
+          <div class="tl-date">4/2025 – 5/2025</div>
+        </div>
+        <div class="tl-desc">Implemented a basic machine learning–based security project while learning core AI/ML concepts.</div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section">
+      <div class="sec-title">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Projects
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-header">
+          <div class="tl-title">AI-Driven One-Touch Booking System</div>
+          <div class="tl-date">SEP – OCT 2025</div>
+        </div>
+        <div class="tl-desc">Assisted in backend development of an AI-based booking workflow using FastAPI for processing user requests and responses.</div>
+        <div class="tl-tech"><strong>Tech:</strong> Python, FastAPI</div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-header">
+          <div class="tl-title">Smart Resume Chatbot (LLM + RAG)</div>
+          <div class="tl-date">AUG 2025</div>
+        </div>
+        <div class="tl-desc">Built a resume chatbot enabling document upload and natural language queries using Retrieval-Augmented Generation.</div>
+        <div class="tl-tech"><strong>Tech:</strong> Python, Streamlit, LangChain, FAISS, Hugging Face</div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-header">
+          <div class="tl-title">Project Management Dashboard</div>
+          <div class="tl-date">APR 2025</div>
+        </div>
+        <div class="tl-desc">Developed a React JS–based Project Management Dashboard that allows users to add tasks and update their status as Pending, In Progress, or Completed using state management with hooks.</div>
+        <div class="tl-tech"><strong>Tech:</strong> React JS, JavaScript, HTML, CSS</div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-header">
+          <div class="tl-title">Secure Voting System – Carpe Diem Hackathon</div>
+          <div class="tl-date">APR 2024</div>
+        </div>
+        <div class="tl-desc">Designed a prototype voting system with basic biometric authentication using face recognition and fingerprint input.</div>
+        <div class="tl-tech"><strong>Tech:</strong> Python, OpenCV, MySQL, IoT</div>
+      </div>
+    </div>
+
+    <!-- LEADERSHIP & CERTIFICATIONS -->
+    <div class="section">
+      <div class="sec-title">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Leadership &amp; Certifications
+      </div>
+
+      <div class="tl-entry" style="margin-bottom:10px;">
+        <ul class="lead-list">
+          <li>Secretary (MAD Club), Secretary (SHE Forum), Women's Coordinator (AICUF), Media Member (Enunciate Club)</li>
+          <li>Alumni Representative, Internal Complaint Committee – Student Representative, Sports Captain</li>
         </ul>
       </div>
 
-      <div class="sidebar-section">
-        <div class="sidebar-title">Education</div>
-
-        <div class="edu-entry">
-          <div class="edu-degree">B.E. Information Technology<br/>Honours in Data Science</div>
-          <div class="edu-school">Loyola-ICAM College of Engineering and Technology</div>
-          <div class="edu-meta"><span>2023 – 2027</span><span>CGPA 8.83</span></div>
-        </div>
-
-        <div class="edu-entry">
-          <div class="edu-degree">Higher Secondary</div>
-          <div class="edu-school">ST. Vincent's Mat. Hr. Sec School</div>
-          <div class="edu-meta"><span>2021 – 2023</span><span>87%</span></div>
-        </div>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-title">Certifications</div>
-        <div>
-          <span class="cert-tag">NPTEL – Cyber Security &amp; Privacy</span>
+      <div class="tl-entry">
+        <div class="tl-title" style="margin-bottom:8px;">Certifications &amp; Workshops</div>
+        <div class="cert-tags">
+          <span class="cert-tag">NPTEL – Cyber Security and Privacy</span>
           <span class="cert-tag">Google Coursera – Foundations of Cyber Security</span>
           <span class="cert-tag">Flutter Workshop</span>
           <span class="cert-tag">IoT Workshops</span>
           <span class="cert-tag">Hackathon Participation</span>
         </div>
       </div>
+    </div>
 
-    </aside>
-
-    <!-- MAIN -->
-    <main class="main">
-
-      <!-- ABOUT -->
-      <div class="section">
-        <div class="section-title">
-          <span class="icon">
-            <svg width="15" height="15" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
-          </span>
-          About Me
-        </div>
-        <p class="about-text">I am an Information Technology student with a strong curiosity and a constant desire to learn emerging technologies. With a solid foundation in programming, I aim to strengthen my skills by working on real-world projects and gaining hands-on experience.</p>
-      </div>
-
-      <!-- INTERNSHIPS -->
-      <div class="section">
-        <div class="section-title">
-          <span class="icon">
-            <svg width="15" height="15" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-          </span>
-          Internships
-        </div>
-
-        <div class="timeline-entry">
-          <div class="entry-header">
-            <div class="entry-title">Data Science Intern</div>
-            <span class="entry-date">Jul 2025 – Oct 2025</span>
-          </div>
-          <div class="entry-org">Strato Global Pvt Ltd</div>
-          <div class="entry-desc">Contributed to backend logic and data handling for an AI-based booking workflow using FastAPI.</div>
-        </div>
-
-        <div class="timeline-entry">
-          <div class="entry-header">
-            <div class="entry-title">AI Intern</div>
-            <span class="entry-date">Apr 2025 – May 2025</span>
-          </div>
-          <div class="entry-org">Edunet Foundation (AICTE)</div>
-          <div class="entry-desc">Implemented a basic machine learning–based security project while learning core AI/ML concepts.</div>
-        </div>
-      </div>
-
-      <!-- PROJECTS -->
-      <div class="section">
-        <div class="section-title">
-          <span class="icon">
-            <svg width="15" height="15" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </span>
-          Projects
-        </div>
-
-        <div class="timeline-entry">
-          <div class="entry-header">
-            <div class="entry-title">AI-Driven One-Touch Booking System</div>
-            <span class="entry-date">Sep – Oct 2025</span>
-          </div>
-          <div class="entry-desc">Assisted in backend development of an AI-based booking workflow using FastAPI for processing user requests and responses.</div>
-          <div class="tech-pills">
-            <span class="tech-pill">Python</span>
-            <span class="tech-pill">FastAPI</span>
-          </div>
-        </div>
-
-        <div class="timeline-entry">
-          <div class="entry-header">
-            <div class="entry-title">Smart Resume Chatbot (LLM + RAG)</div>
-            <span class="entry-date">Aug 2025</span>
-          </div>
-          <div class="entry-desc">Built a resume chatbot enabling document upload and natural language queries using Retrieval-Augmented Generation.</div>
-          <div class="tech-pills">
-            <span class="tech-pill">Python</span>
-            <span class="tech-pill">Streamlit</span>
-            <span class="tech-pill">LangChain</span>
-            <span class="tech-pill">FAISS</span>
-            <span class="tech-pill">Hugging Face</span>
-          </div>
-        </div>
-
-        <div class="timeline-entry">
-          <div class="entry-header">
-            <div class="entry-title">Project Management Dashboard</div>
-            <span class="entry-date">Apr 2025</span>
-          </div>
-          <div class="entry-desc">Developed a React JS–based dashboard allowing users to add tasks and update their status (Pending / In Progress / Completed) using state management with hooks.</div>
-          <div class="tech-pills">
-            <span class="tech-pill">React JS</span>
-            <span class="tech-pill">JavaScript</span>
-            <span class="tech-pill">HTML</span>
-            <span class="tech-pill">CSS</span>
-          </div>
-        </div>
-
-        <div class="timeline-entry">
-          <div class="entry-header">
-            <div class="entry-title">Secure Voting System — Carpe Diem Hackathon</div>
-            <span class="entry-date">Apr 2024</span>
-          </div>
-          <div class="entry-desc">Designed a prototype voting system with basic biometric authentication using face recognition and fingerprint input.</div>
-          <div class="tech-pills">
-            <span class="tech-pill">Python</span>
-            <span class="tech-pill">OpenCV</span>
-            <span class="tech-pill">MySQL</span>
-            <span class="tech-pill">IoT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- LEADERSHIP -->
-      <div class="section">
-        <div class="section-title">
-          <span class="icon">
-            <svg width="15" height="15" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-          </span>
-          Leadership
-        </div>
-        <ul class="leadership-list">
-          <li>Secretary — MAD Club</li>
-          <li>Secretary — SHE Forum</li>
-          <li>Women's Coordinator — AICUF</li>
-          <li>Media Member — Enunciate Club</li>
-          <li>Alumni Representative</li>
-          <li>Student Representative — Internal Complaint Committee</li>
-          <li>Sports Captain</li>
-        </ul>
-      </div>
-
-    </main>
-  </div><!-- /.two-col -->
-
-</div><!-- /.page -->
+  </main>
+</div>
 </body>
 </html>
