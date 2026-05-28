@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gavrila E — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0f2544;
+    --blue: #1a4480;
+    --accent: #3e8ef7;
+    --gold: #e8b14f;
+    --light: #f4f7fd;
+    --white: #ffffff;
+    --muted: #6b7fa3;
+    --border: #d4dff0;
+    --text: #1c2b45;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #2563b0 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px 70px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+
+  .avatar-wrap {
+    flex-shrink: 0;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    background: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .hero-text { flex: 1; }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -1px;
+  }
+
+  .hero-name span { color: var(--gold); }
+
+  .hero-tagline {
+    margin-top: 10px;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.72);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-contacts {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .contact-item:hover { color: var(--gold); }
+  .contact-item svg { opacity: 0.75; flex-shrink: 0; }
+
+  /* ── LAYOUT ── */
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    background: var(--navy);
+    padding: 36px 28px;
+    min-height: 100%;
+  }
+
+  .sidebar-section { margin-bottom: 36px; }
+
+  .sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(232,177,79,0.25);
+  }
+
+  /* Skills */
+  .skill-list { list-style: none; }
+  .skill-list li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 0;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .skill-list li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* Education sidebar */
+  .edu-entry { margin-bottom: 18px; }
+  .edu-degree {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.35;
+  }
+  .edu-school {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.55);
+    margin-top: 3px;
+    font-style: italic;
+  }
+  .edu-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* Certs */
+  .cert-tag {
+    display: inline-block;
+    background: rgba(62,142,247,0.15);
+    border: 1px solid rgba(62,142,247,0.3);
+    border-radius: 4px;
+    padding: 4px 9px;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.8);
+    margin: 3px 3px 3px 0;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    background: var(--white);
+    padding: 36px 40px;
+  }
+
+  .section { margin-bottom: 38px; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .section-title .icon {
+    width: 30px; height: 30px;
+    background: var(--accent);
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title .icon svg { color: #fff; }
+
+  /* About */
+  .about-text {
+    font-size: 0.97rem;
+    line-height: 1.75;
+    color: #3a4a65;
+  }
+
+  /* Timeline entries */
+  .timeline-entry {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 24px;
+  }
+  .timeline-entry::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 7px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid #b8d4f8;
+  }
+  .timeline-entry::after {
+    content: '';
+    position: absolute;
+    left: 4px; top: 20px;
+    width: 2px;
+    bottom: -14px;
+    background: var(--border);
+  }
+  .timeline-entry:last-child::after { display: none; }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .entry-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .entry-date {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(62,142,247,0.08);
+    border-radius: 4px;
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+
+  .entry-org {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  .entry-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #3d4f6b;
+    margin-top: 7px;
+  }
+
+  .tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 9px;
+  }
+
+  .tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(26,68,128,0.07);
+    border: 1px solid rgba(26,68,128,0.15);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.3px;
+  }
+
+  /* Leadership */
+  .leadership-list { list-style: none; }
+  .leadership-list li {
+    font-size: 0.9rem;
+    color: #3a4a65;
+    padding: 6px 0 6px 18px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .leadership-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.8rem;
+    top: 7px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; }
+    .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  @media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; padding: 36px 24px 48px; text-align: center; }
+    .hero-contacts { justify-content: center; }
+    .main { padding: 28px 20px; }
+    .sidebar { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="avatar-wrap">GE</div>
+    <div class="hero-text">
+      <h1 class="hero-name">Gavrila <span>E</span></h1>
+      <p class="hero-tagline">Student Passionate About Technology &amp; Continuous Learning · B.E. Information Technology</p>
+      <div class="hero-contacts">
+        <a class="contact-item" href="tel:+917904325516">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.07 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          +91 7904325516
+        </a>
+        <a class="contact-item" href="mailto:gavrila.27it@licet.ac.in">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg>
+          gavrila.27it@licet.ac.in
+        </a>
+        <a class="contact-item" href="https://github.com/GAVRI12" target="_blank">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          github.com/GAVRI12
+        </a>
+        <span class="contact-item">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Chennai, Tamil Nadu - 600094
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- TWO COLUMN BODY -->
+  <div class="two-col">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Technical Skills</div>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>Java</li>
+          <li>HTML / CSS / JavaScript</li>
+          <li>Full Stack Development</li>
+          <li>App Development</li>
+          <li>DBMS · SQL · MongoDB</li>
+          <li>Software Testing</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Education</div>
+
+        <div class="edu-entry">
+          <div class="edu-degree">B.E. Information Technology<br/>Honours in Data Science</div>
+          <div class="edu-school">Loyola-ICAM College of Engineering and Technology</div>
+          <div class="edu-meta"><span>2023 – 2027</span><span>CGPA 8.83</span></div>
+        </div>
+
+        <div class="edu-entry">
+          <div class="edu-degree">Higher Secondary</div>
+          <div class="edu-school">ST. Vincent's Mat. Hr. Sec School</div>
+          <div class="edu-meta"><span>2021 – 2023</span><span>87%</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Certifications</div>
+        <div>
+          <span class="cert-tag">NPTEL – Cyber Security &amp; Privacy</span>
+          <span class="cert-tag">Google Coursera – Foundations of Cyber Security</span>
+          <span class="cert-tag">Flutter Workshop</span>
+          <span class="cert-tag">IoT Workshops</span>
+          <span class="cert-tag">Hackathon Participation</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- ABOUT -->
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">
+            <svg width="15" height="15" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+          </span>
+          About Me
+        </div>
+        <p class="about-text">I am an Information Technology student with a strong curiosity and a constant desire to learn emerging technologies. With a solid foundation in programming, I aim to strengthen my skills by working on real-world projects and gaining hands-on experience.</p>
+      </div>
+
+      <!-- INTERNSHIPS -->
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">
+            <svg width="15" height="15" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+          </span>
+          Internships
+        </div>
+
+        <div class="timeline-entry">
+          <div class="entry-header">
+            <div class="entry-title">Data Science Intern</div>
+            <span class="entry-date">Jul 2025 – Oct 2025</span>
+          </div>
+          <div class="entry-org">Strato Global Pvt Ltd</div>
+          <div class="entry-desc">Contributed to backend logic and data handling for an AI-based booking workflow using FastAPI.</div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="entry-header">
+            <div class="entry-title">AI Intern</div>
+            <span class="entry-date">Apr 2025 – May 2025</span>
+          </div>
+          <div class="entry-org">Edunet Foundation (AICTE)</div>
+          <div class="entry-desc">Implemented a basic machine learning–based security project while learning core AI/ML concepts.</div>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">
+            <svg width="15" height="15" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </span>
+          Projects
+        </div>
+
+        <div class="timeline-entry">
+          <div class="entry-header">
+            <div class="entry-title">AI-Driven One-Touch Booking System</div>
+            <span class="entry-date">Sep – Oct 2025</span>
+          </div>
+          <div class="entry-desc">Assisted in backend development of an AI-based booking workflow using FastAPI for processing user requests and responses.</div>
+          <div class="tech-pills">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">FastAPI</span>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="entry-header">
+            <div class="entry-title">Smart Resume Chatbot (LLM + RAG)</div>
+            <span class="entry-date">Aug 2025</span>
+          </div>
+          <div class="entry-desc">Built a resume chatbot enabling document upload and natural language queries using Retrieval-Augmented Generation.</div>
+          <div class="tech-pills">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Streamlit</span>
+            <span class="tech-pill">LangChain</span>
+            <span class="tech-pill">FAISS</span>
+            <span class="tech-pill">Hugging Face</span>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="entry-header">
+            <div class="entry-title">Project Management Dashboard</div>
+            <span class="entry-date">Apr 2025</span>
+          </div>
+          <div class="entry-desc">Developed a React JS–based dashboard allowing users to add tasks and update their status (Pending / In Progress / Completed) using state management with hooks.</div>
+          <div class="tech-pills">
+            <span class="tech-pill">React JS</span>
+            <span class="tech-pill">JavaScript</span>
+            <span class="tech-pill">HTML</span>
+            <span class="tech-pill">CSS</span>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="entry-header">
+            <div class="entry-title">Secure Voting System — Carpe Diem Hackathon</div>
+            <span class="entry-date">Apr 2024</span>
+          </div>
+          <div class="entry-desc">Designed a prototype voting system with basic biometric authentication using face recognition and fingerprint input.</div>
+          <div class="tech-pills">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">OpenCV</span>
+            <span class="tech-pill">MySQL</span>
+            <span class="tech-pill">IoT</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEADERSHIP -->
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">
+            <svg width="15" height="15" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </span>
+          Leadership
+        </div>
+        <ul class="leadership-list">
+          <li>Secretary — MAD Club</li>
+          <li>Secretary — SHE Forum</li>
+          <li>Women's Coordinator — AICUF</li>
+          <li>Media Member — Enunciate Club</li>
+          <li>Alumni Representative</li>
+          <li>Student Representative — Internal Complaint Committee</li>
+          <li>Sports Captain</li>
+        </ul>
+      </div>
+
+    </main>
+  </div><!-- /.two-col -->
+
+</div><!-- /.page -->
+</body>
+</html>
